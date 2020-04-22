@@ -1,0 +1,39 @@
+<div>
+    <form #crearTareasForm="ngForm" (ngSubmit)="agregarTarea()">
+        <input type="text" id="nombre" placeholder="Nombre" required
+            #nombreEncargado="ngModel" name="nombreEncargado" 
+            [(ngModel)]="tareasRegistrada.nombreEncargado">
+        <br>
+        <input type="text" id="tarea" placeholder="Tarea" required
+            #descripcionTarea="ngModel" name="descripcionTarea" 
+            [(ngModel)]="tareasRegistrada.descripcionTarea">
+        <br>
+        <input type="text" id="estado" placeholder="Estado" required
+            #estado="ngModel" name="estado" 
+            [(ngModel)]="tareasRegistrada.estado">
+        <br><br>
+        <button type="submit" class="boton">Crear Tarea</button>
+    </form>
+</div>
+
+
+
+<div *ngFor="let tarea of tareasEncontradas">
+    <form #actualizarTareasForm="ngForm">
+        <input type="text" id="nombre" required
+            #nombreEncargado="ngModel" name="nombreEncargado" 
+            [(ngModel)]="tarea.nombreEncargado" >
+        <br>
+        <input type="text" id="tarea" required
+          #descripcionTarea="ngModel" name="descripcionTarea" 
+          [(ngModel)]="tarea.descripcionTarea" >
+        <br>
+        <input type="text" id="estado" required
+          #estado="ngModel" name="estado" 
+          [(ngModel)]="tarea.estado">
+          <br>
+        <button (click)="editarTarea(tarea)">Editar Tarea</button>
+        <br>
+        <button (click)="eliminarTarea(tarea._id)">Eliminar</button>
+    </form>
+</div>
